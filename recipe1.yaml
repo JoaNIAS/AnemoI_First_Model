@@ -1,0 +1,60 @@
+name: aifs-od-an-oper-0001-mars-1p5-2015-2023-12h-v1-do-not-use
+
+description: Dataset from 2015 to 2023, analysis from operational IFS, resolution
+  1.5 deg lat/lon. Will not allow running inference.
+
+attribution: ecmwf
+
+licence: CC-BY-4.0
+
+dates:
+  start: '2021-01-01T00:00:00'
+  end: '2023-12-31T12:00:00'
+  frequency: 12h
+
+input:
+  join:
+  - mars:
+      class: od
+      type: an
+      expver: '0001'
+      grid: 1.5/1.5
+      param:
+      - 10u
+      - 10v
+      - 2t
+      - lsm
+      - msl
+      - z
+      levtype: sfc
+  - mars:
+      class: od
+      type: an
+      expver: '0001'
+      grid: 1.5/1.5
+      levtype: pl
+      param:
+      - t
+      - z
+      level:
+      - 500
+      - 850
+  - constants:
+      template: ${input.join.0.mars}
+      param:
+      - cos_latitude
+      - cos_longitude
+      - sin_latitude
+      - sin_longitude
+      - cos_julian_day
+      - cos_local_time
+      - sin_julian_day
+      - sin_local_time
+      - cos_solar_zenith_angle
+
+common:
+  mars_request:
+    class: od
+    type: an
+    expver: '0001'
+    grid: 1.5/1.5
