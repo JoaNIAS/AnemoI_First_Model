@@ -1,0 +1,12 @@
+nodes:
+  data:
+    node_builder:
+      _target_: anemoi.graphs.nodes.ZarrDatasetNodes
+      dataset: dataset_new_onemore.zarr
+
+edges:
+  - source_name: data
+    target_name: data
+    edge_builder:
+      _target_: anemoi.graphs.edges.KNNEdges
+      num_nearest_neighbours: 3
