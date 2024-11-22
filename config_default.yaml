@@ -1,0 +1,18 @@
+defaults:
+- data: zarr
+- dataloader: native_grid
+- diagnostics: evaluation
+- hardware: example
+- graph: multi_scale
+- model: gnn
+- training: default
+- _self_
+
+hardware:
+  paths:
+    output: output/
+    data: dataset/
+    graph: 
+  files:
+    dataset: dataset_new_onemore.zarr
+    graph: graph1.pt
